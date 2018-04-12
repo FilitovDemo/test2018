@@ -29,9 +29,13 @@ $stmt->execute();
 echo '<table border=1>';  //border=1 事後請改用CSS處理
 while($row = $stmt->fetch()){  //小心,此處的=號是把右邊的值存往左側
 	echo '<tr>';
-	echo '<td>'.$row['m_id'].'</td>';
+	//echo '<td>'.$row['m_id'].'</td>';
 	echo '<td>'.$row['name'].'</td>';
 	echo '<td>'.$row['cost'].'</td>';
+	echo '<td>';
+	echo '<a href="edit.php?id='.$row['m_id'].'">修改</a> | ';
+	echo '<a href="delete.php?id='.$row['m_id'].'">刪除</a>';
+	echo '</td>';
 	echo '</tr>';
 }
 echo '</table>';
