@@ -5,6 +5,8 @@
 	<title>列表</title>
 </head>
 <body>
+
+<a href="add_form.html">新增</a>
 <?php
 //連接資料庫
 try {
@@ -24,7 +26,7 @@ try {
 $stmt = $db->prepare('select * from moneybook');
 $stmt->execute();
 
-echo '<table border=1>';
+echo '<table border=1>';  //border=1 事後請改用CSS處理
 while($row = $stmt->fetch()){  //小心,此處的=號是把右邊的值存往左側
 	echo '<tr>';
 	echo '<td>'.$row['m_id'].'</td>';

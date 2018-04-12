@@ -1,17 +1,17 @@
-«ШҐЯ...
-* ёк®Ж®w test0329
-* ёк®ЖЄнtable moneybook
-* Дж¦м
+е»єз«‹...
+* иі‡ж–™еє« test0329
+* иі‡ж–™иЎЁtable moneybook
+* ж¬„дЅЌ
 	1. m_id    Primary key
-	2. name    200ҐH¤UЄє¦r¦к
-	3. cost    ѕгјЖ
-* ҐiҐHѕЮ§@іo­Уёк®Ж®wЄєЁПҐОЄМ mememe / 123456
-	1. °х¦ж D:\xampp\mysql\bin\mysql -uroot
-	2. ЁПҐО http://localhost/phpmyadmin/
-	3. ЁПҐО adminer http://localhost/adminer.php
+	2. name    200д»Ґдё‹зљ„е­—дёІ
+	3. cost    ж•ґж•ё
+* еЏЇд»Ґж“ЌдЅњйЂ™еЂ‹иі‡ж–™еє«зљ„дЅїз”ЁиЂ… mememe / 123456
+	1. еџ·иЎЊ D:\xampp\mysql\bin\mysql -uroot
+	2. дЅїз”Ё http://localhost/phpmyadmin/
+	3. дЅїз”Ё adminer http://localhost/adminer.php
    
 
-©RҐOґЈҐЬ¦r¤ё D:\xampp\mysql\bin\mysql -uroot
+е‘Ѕд»¤жЏђз¤єе­—е…ѓ D:\xampp\mysql\bin\mysql -uroot
 
 ````
 CREATE DATABASE test0329 DEFAULT CHARACTER SET 'utf8' DEFAULT COLLATE 'utf8_general_ci';
@@ -25,7 +25,7 @@ FLUSH PRIVILEGES;
 EXIT;
 ````
 
-©RҐOґЈҐЬ¦r¤ё D:\xampp\mysql\bin\mysql -umememe -p
+е‘Ѕд»¤жЏђз¤єе­—е…ѓ D:\xampp\mysql\bin\mysql -umememe -p
 
 ````
 USE test0329;
