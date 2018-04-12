@@ -19,7 +19,8 @@ c. 使用 adminer
 
 命令提示字元 D:\xampp\mysql\bin\mysql -uroot
 
-CREATE DATABASE test0329 DEFAULT CHARACTER SET 'utf8' DEFAULT COLLATE 'utf8_general_ci'
+````
+CREATE DATABASE test0329 DEFAULT CHARACTER SET 'utf8' DEFAULT COLLATE 'utf8_general_ci';
 
 CREATE USER 'mememe'@'localhost' IDENTIFIED BY '123456';
 
@@ -28,9 +29,11 @@ GRANT ALL PRIVILEGES ON test0329.* TO 'mememe'@'localhost';
 FLUSH PRIVILEGES;
 
 EXIT;
+````
 
 命令提示字元 D:\xampp\mysql\bin\mysql -umememe -p
 
+````
 USE test0329;
 
 CREATE TABLE moneybook (
@@ -38,4 +41,4 @@ CREATE TABLE moneybook (
   name VARCHAR(200),
   cost INT
 ) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
-
+````
