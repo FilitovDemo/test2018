@@ -1,19 +1,16 @@
 建立...
-資料庫
-test0329
-	資料表table
-	moneybook
-		欄位
-		m_id    Primary key
-		name    200以下的字串
-		cost    整數
+* 資料庫 test0329
+* 資料表table moneybook
+* 欄位
+	m_id    Primary key
+	name    200以下的字串
+	cost    整數
 	
-建立..
-可以操作這個資料庫的使用者 mememe / 123456
+建立..可以操作這個資料庫的使用者 mememe / 123456
 
-a. 執行 D:\xampp\mysql\bin\mysql -uroot
-b. 使用 http://localhost/phpmyadmin/
-c. 使用 adminer
+1. 執行 D:\xampp\mysql\bin\mysql -uroot
+2. 使用 http://localhost/phpmyadmin/
+3. 使用 adminer
    http://localhost/adminer.php
    
 
