@@ -1,13 +1,13 @@
 <?php
-if( !isset($_POST["prod"]) || !isset($_POST['price'])
-	|| empty($_POST['price']) || !is_int($_POST['price'])
+if( !isset($_POST['prod']) || !isset($_POST['price'])
+	|| empty($_POST['price']) 
 	|| empty($_POST['prod']) )
 {
-	echo '¤£¹ï';
+	echo 'ä¸å°';
 	exit;
 }
 
-//$db = new PDO('³s½u¦r¦ê',±b¸¹,±K½X,ÃB¥~°Ñ¼Æ);
+//$db = new PDO('é€£ç·šå­—ä¸²',å¸³è™Ÿ,å¯†ç¢¼,é¡å¤–åƒæ•¸);
 //$db = new PDO('mysql:host=localhost;dbname=test0329;charset=utf8'
 //	,'mememe','123456' );
 try {
@@ -18,17 +18,15 @@ try {
 		) );
 }catch(PDOException $err) {
 	echo "ERROR:";
-	echo $err->getMessage();
+	echo $err->getMessage();  //çœŸå¯¦ä¸–ç•Œä¸é€™æ¨£åš
 	exit;
 }
 
-echo "³s½u¦¨¥\";
+echo "é€£ç·šæˆåŠŸ";
 
-$stmt = $db->prepare("insert into moneybook (name,cost) values (?,?)");
-$stmt->execute([$_POST["prod"], $_POST['price']]);
+$stmt = $db->prepare('insert into moneybook (name,cost) values (?,?)');
+$stmt->execute([$_POST['prod'],$_POST['price']]);
 
-echo "·s¼W¤F";
+echo 'æ–°å¢žäº†';
 echo $stmt->rowCount();
-echo "µ§¸ê®Æ";
-
-
+echo 'ç­†è³‡æ–™';
