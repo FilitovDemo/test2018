@@ -1,6 +1,6 @@
 <?php
 if( !isset($_POST['prod']) || !isset($_POST['price'])
-	|| empty($_POST['price']) 
+	|| empty($_POST['price'])
 	|| empty($_POST['prod']) )
 {
 	echo '不對';
