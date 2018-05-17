@@ -1,24 +1,24 @@
 
-## ³]©w php.ini
+## è¨­å®š php.ini
 
-¦]¬°¨Ï¥Î¤F POST µo°e JSON ¸ê®Æ, ·|Ä²µo $HTTP_RAW_POST_DATA °±¥Î´£¥Ü°T®§
+å› ç‚ºä½¿ç”¨äº† POST ç™¼é€ JSON è³‡æ–™, æœƒè§¸ç™¼ ```$HTTP_RAW_POST_DATA``` åœç”¨æç¤ºè¨Šæ¯
 
     Deprecated: Automatically populating $HTTP_RAW_POST_DATA is deprecated 
 	and will be removed in a future version. To avoid this warning set 
 	'always_populate_raw_post_data' to '-1' in php.ini and use the 
 	php://input stream instead.
 
-¥i­×§ï ```php.ini``` ¤¤ 702 ¦æªº
+å¯ä¿®æ”¹ ```php.ini``` ä¸­ 702 è¡Œçš„
 
 ```ini
 always_populate_raw_post_data = -1
 ```
 
-¥i¥HÃö±¼ $HTTP_RAW_POST_DATA °±¥Î°T®§¡A°O±o­nÃö±¼­«¶}php©Îºô­¶¦øªA¾¹¡C
+å¯ä»¥é—œæ‰ $HTTP_RAW_POST_DATA åœç”¨è¨Šæ¯ï¼Œè¨˜å¾—è¦é—œæ‰é‡é–‹phpæˆ–ç¶²é ä¼ºæœå™¨ã€‚
 
-## «Ø¥ß¸ê®Æªí»P¨Ï¥ÎªÌ (¦P0329)
+## å»ºç«‹è³‡æ–™è¡¨èˆ‡ä½¿ç”¨è€… (åŒ0329)
 
-¶}±Ò©R¥O´£¥Ü¦r¤¸ ```D:\xampp\mysql\bin\mysql -uroot```
+é–‹å•Ÿå‘½ä»¤æç¤ºå­—å…ƒ ```D:\xampp\mysql\bin\mysql -uroot```
 
 ```sql
 CREATE DATABASE test0329 DEFAULT CHARACTER SET 'utf8' DEFAULT COLLATE 'utf8_general_ci';
