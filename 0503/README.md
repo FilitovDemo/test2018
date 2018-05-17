@@ -1,3 +1,4 @@
+# AJAX 模式
 
 ## 設定 php.ini
 
