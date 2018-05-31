@@ -86,6 +86,8 @@ function getList(){
 function insert2List( data ){
 	var tbl = document.getElementById('list');	
 	var row = tbl.insertRow( tbl.rows.length );	
+	row.setAttribute('t_id', data.id );
+	
 	var ce1,ce2,ce3;
 	ce1 = row.insertCell(0);
 	ce2 = row.insertCell(1);
@@ -126,10 +128,11 @@ function del_click( ev ){
 	xhr.onreadystatechange = function(){
 		if( this.readyState == 4 ){ //回傳結束了
 			if( this.status == 200 ){ //正確
-				console.log( this.responseText ); //不做任何處理
+				//console.log( this.responseText ); //不做任何處理
 				//從畫面上把刪除的資料拿掉
-				//???
-				//???
+				var ret = JSON.parse(this.responseText);
+				var tr = document.querySelector( 'tr[t_id="'+ret.id+'"]' );
+				tr.parentNode.removeChild(tr);
 			}else{ //錯誤
 				console.log( this.responseText ); //不做任何處理
 				alert('刪除失敗');
