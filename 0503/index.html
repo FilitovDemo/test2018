@@ -164,9 +164,9 @@ function update2Server(){
 	xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
 	xhr.onreadystatechange = function(){
 		if( this.readyState == 4 ){ //回傳結束了
-			if( this.status == 201 ){ //正確
+			if( this.status == 200 ){ //正確
 				console.log( this.responseText ); //不做任何處理
-				//insert2List( JSON.parse(this.responseText) );  //新增到list
+				replaceInList( JSON.parse(this.responseText) );  //取代原資料
 				hideNode("edit_form");
 				showNode("show_add_btn");
 			}else{ //錯誤
@@ -176,6 +176,46 @@ function update2Server(){
 		}
 	};
 	xhr.send( JSON.stringify(data) );
+}
+
+
+//--------------------------------------------------
+//把一筆資料加到清單表格中
+//傳入的參數  {"prod":"hb kj","price":"1","id":"16"}
+function replaceInList( data ){
+	//尋找要取代的對象
+	var tr = document.querySelector( 'tr[t_id="'+data.id+'"]' );
+	
+	//建立一個要取代成的TR
+//	var tbl = document.getElementById('list');	
+//	var row = tbl.insertRow( tbl.rows.length );	
+	var row = document.createElement('tr');
+	row.setAttribute('t_id', data.id );
+	
+	var ce1,ce2,ce3;
+	ce1 = row.insertCell(0);
+	ce2 = row.insertCell(1);
+	ce3 = row.insertCell(2);
+	
+	ce1.appendChild( document.createTextNode( data.prod ) );
+	ce2.appendChild( document.createTextNode( data.price ) );
+
+	var btn1,btn2;
+	btn1 = document.createElement('button');
+	btn1.setAttribute('t_id', data.id );
+	btn1.addEventListener('click', del_click );  //<----刪除按鈕的動作
+	btn1.appendChild( document.createTextNode('刪除') );
+	
+	btn2 = document.createElement('button');
+	btn2.setAttribute('t_id', data.id );
+	btn2.addEventListener('click', edit_click );  //<----修改按鈕的動作
+	btn2.appendChild( document.createTextNode('修改') );
+	
+	ce3.appendChild( btn1 );
+	ce3.appendChild( btn2 );
+	
+	//把原來的TR換成新的
+	tr.parentNode.replaceChild( row, tr );
 }
 
 
@@ -239,6 +279,7 @@ function del_click( ev ){
 	x = document.getElementById("show_add_btn");
 	x.addEventListener("click", function() {
 		showNode("edit_form");
+		showNode("add_btn");
 		hideNode("update_btn");
 		hideNode("show_add_btn");
 	});
