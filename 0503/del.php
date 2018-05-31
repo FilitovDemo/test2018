@@ -1,5 +1,12 @@
 <?php
 //輸入=======================================================
+//如果要檢查取用方式是否符合....
+//if( strcasecmp($_SERVER['REQUEST_METHOD'], 'DELETE') !=0 ){
+//	http_response_code(405);
+//	echo 'wrong way';
+//	exit;	
+//}
+
 //預期收到的資料格式  { id:值 }
 $data = json_decode(file_get_contents('php://input'));
 

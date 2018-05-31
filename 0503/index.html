@@ -104,11 +104,80 @@ function insert2List( data ){
 	
 	btn2 = document.createElement('button');
 	btn2.setAttribute('t_id', data.id );
+	btn2.addEventListener('click', edit_click );  //<----修改按鈕的動作
 	btn2.appendChild( document.createTextNode('修改') );
 	
 	ce3.appendChild( btn1 );
 	ce3.appendChild( btn2 );
 }
+
+
+//--------------------------------------------------
+//修改按鈕的動作
+function edit_click( ev ){
+	//確認誰被點了修改 ev.target
+	var id = ev.target.getAttribute('t_id');
+	
+	//對伺服器發出取得該筆待修改的資料請求
+	//發出請求給 get.php?id=0
+	//接收傳回值 { id:0, prog:"某東西", price:某值 }
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "get.php?id="+id);
+	//此處不用 xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+	xhr.onreadystatechange = function(){
+		if( this.readyState == 4 ){ //回傳結束了
+			if( this.status == 200 ){ //正確
+				//console.log( this.responseText ); //不做任何處理
+				var data = JSON.parse(this.responseText);
+				//呈現到修改的畫面
+				showNode("edit_form");
+				document.getElementById("prod").value  = data.prod;
+				document.getElementById("price").value = data.price;
+				document.getElementById("ppid").value  = data.id;
+				showNode("update_btn");
+				hideNode("add_btn");
+				hideNode("show_add_btn");
+			}else{ //錯誤
+				console.log( this.responseText ); //不做任何處理
+				alert('刪除失敗');
+			}
+		}
+	};
+	xhr.send();
+}
+
+//--------------------------------------------------
+//把表單的資料，送到伺服器上新增儲存
+function update2Server(){
+	
+	//建立一個要發送到伺服器的資料物件 { } JSON
+	var data = {
+		id: document.getElementById("ppid").value,
+		prod: document.getElementById("prod").value,
+		price: document.getElementById("price").value
+	};
+	//console.log( data );
+	
+	// AJAX請求
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "update.php");    //發送對象 add.php
+	xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+	xhr.onreadystatechange = function(){
+		if( this.readyState == 4 ){ //回傳結束了
+			if( this.status == 201 ){ //正確
+				console.log( this.responseText ); //不做任何處理
+				//insert2List( JSON.parse(this.responseText) );  //新增到list
+				hideNode("edit_form");
+				showNode("show_add_btn");
+			}else{ //錯誤
+				console.log( this.responseText ); //不做任何處理
+				alert('新增失敗');
+			}
+		}
+	};
+	xhr.send( JSON.stringify(data) );
+}
+
 
 //--------------------------------------------------
 //刪除按鈕的動作
@@ -123,7 +192,7 @@ function del_click( ev ){
 	//發出刪除的請求
 	// AJAX請求
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "del.php");
+	xhr.open("DELETE", "del.php");
 	xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
 	xhr.onreadystatechange = function(){
 		if( this.readyState == 4 ){ //回傳結束了
@@ -183,6 +252,10 @@ function del_click( ev ){
 	//設定點擊「新增」到資料庫按鈕時的動作
 	document.getElementById("add_btn")
 			.addEventListener("click", add2Server);
+	
+	//設定點擊「編輯後儲存」到資料庫按鈕時的動作
+	document.getElementById("update_btn")
+			.addEventListener("click", update2Server);
 	
 	//取得遠端的資料
 	getList();
